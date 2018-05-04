@@ -6,8 +6,7 @@ export default class Select extends Component {
   render() {
     const { type, placeholder, collections, handleSelectChange } = this.props
     return (
-      <Row>
-        <Input s={12} type='select' onChange={handleSelectChange}>
+        <Input m={12} type='select' onChange={handleSelectChange}>
         <option value='' disabled selected>{placeholder}</option>
        {
          collections.map(element => (
@@ -16,7 +15,6 @@ export default class Select extends Component {
      )
    }
       </Input>
-    </Row>
     )
   }
 }

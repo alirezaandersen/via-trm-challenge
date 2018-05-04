@@ -6,7 +6,7 @@ export default class Input extends Component {
   render() {
     const { placeholder } = this.props
     return (
-      <MaterializeInput type='text' placeholder={placeholder}>
+      <MaterializeInput m={12} type='text' placeholder={placeholder}>
       </MaterializeInput>
     )
   }
