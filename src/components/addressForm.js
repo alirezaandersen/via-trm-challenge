@@ -3,6 +3,7 @@ import { Row } from 'react-materialize'
 import Select from './select'
 import Input from './input'
 import countries from '../const/countries'
+import states from '../const/usStates'
 
 
 export default class AddressForm extends Component {
@@ -11,37 +12,47 @@ export default class AddressForm extends Component {
     this.state = {}
   }
 
-  handleCountrySelectChange = (e) => {
-    const country = e.target.value
-    this.setState({country})
+  handleSeleChange = (e) => {
+    const targetValue = e.target.value
+    const targetName = e.target.name
+
+    this.setState({[targetName]: targetValue})
   }
 
-  handleStateSelectChange = (e) => {
-    const state = e.target.value
-    this.setState({state})
+  handleInputChange = (e) => {
+    const targetValue = e.target.value
+    const targetName = e.target.name
+
+    this.setState({[targetName]: targetValue})
   }
 
   render() {
     return (
       <div>
         <Select
-          handleSelectChange={this.handleCountrySelectChange}
+          handleSelectChange={this.handleSelectChange}
+          name={'country'}
           placeholder={'Country'}
           collections={countries}
         />
         <Input
+          handleInputChange={this.handleInputChange}
+          name='city'
          placeholder={'City'}
         />
         {
           this.state.country === 'US' ?
           <Select
-            handleSelectChange={this.handleStateSelectChange}
+            handleSelectChange={this.handleSelectChange}
+            name={'state'}
             placeholder={'State'}
-            collections={countries}
+            collections={states}
           />
           :
           <Input
             placeholder={'State'}
+            handleSelectChange={this.handleSelectChange}
+            name={'state'}
           />
         }
       </div>
