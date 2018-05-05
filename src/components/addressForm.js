@@ -23,31 +23,46 @@ export default class AddressForm extends Component {
     return (
       <div>
         <Select
-          handleSelectChange={this.handleInputChange}
           name={'country'}
           placeholder={'Country'}
           collections={countries}
+          handleSelectChange={this.handleInputChange}
         />
         <Input
-          handleInputChange={this.handleInputChange}
           name='city'
-         placeholder={'City'}
+          placeholder={'City'}
+          handleInputChange={this.handleInputChange}
         />
         {
           this.state.country === 'US' ?
           <Select
-            handleSelectChange={this.handleInputChange}
             name={'state'}
             placeholder={'State'}
             collections={states}
+            handleSelectChange={this.handleInputChange}
           />
           :
           <Input
+            name={'state'}
             placeholder={'State'}
             handleSelectChange={this.handleInputChange}
-            name={'state'}
           />
         }
+        <Input
+          name='zipCode'
+          placeholder={'Zip Code'}
+          handleInputChange={this.handleInputChange}
+        />
+        <Input
+          name='permAddress'
+          placeholder={'Permanent Address'}
+          handleInputChange={this.handleInputChange}
+        />
+        <Input
+          name='permAddress2'
+          placeholder={'Permanent Address (Line 2)'}
+          handleInputChange={this.handleInputChange}
+        />
       </div>
     )
   }
