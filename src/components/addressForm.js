@@ -12,13 +12,6 @@ export default class AddressForm extends Component {
     this.state = {}
   }
 
-  handleSeleChange = (e) => {
-    const targetValue = e.target.value
-    const targetName = e.target.name
-
-    this.setState({[targetName]: targetValue})
-  }
-
   handleInputChange = (e) => {
     const targetValue = e.target.value
     const targetName = e.target.name
@@ -30,7 +23,7 @@ export default class AddressForm extends Component {
     return (
       <div>
         <Select
-          handleSelectChange={this.handleSelectChange}
+          handleSelectChange={this.handleInputChange}
           name={'country'}
           placeholder={'Country'}
           collections={countries}
@@ -43,7 +36,7 @@ export default class AddressForm extends Component {
         {
           this.state.country === 'US' ?
           <Select
-            handleSelectChange={this.handleSelectChange}
+            handleSelectChange={this.handleInputChange}
             name={'state'}
             placeholder={'State'}
             collections={states}
@@ -51,7 +44,7 @@ export default class AddressForm extends Component {
           :
           <Input
             placeholder={'State'}
-            handleSelectChange={this.handleSelectChange}
+            handleSelectChange={this.handleInputChange}
             name={'state'}
           />
         }
