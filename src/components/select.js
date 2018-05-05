@@ -4,9 +4,9 @@ import { Input, Row } from 'react-materialize'
 
 export default class Select extends Component {
   render() {
-    const { type, placeholder, collections, handleSelectChange } = this.props
+    const { placeholder, collections, handleSelectChange, name } = this.props
     return (
-        <Input m={12} type='select' onChange={handleSelectChange}>
+        <Input m={12} type='select' name={name} onChange={handleSelectChange}>
         <option value='' disabled selected>{placeholder}</option>
        {
          collections.map(element => (
@@ -19,7 +19,14 @@ export default class Select extends Component {
   }
 }
 
+Select.defaultProps = {
+  placeholder: 'Select',
+  handleSelectChange: () => {}
+}
+
 Select.propTypes = {
-  label: PropTypes.string,
-  collections: PropTypes.array.isRequired
+  placeholder: PropTypes.string,
+  name: PropTypes.string,
+  collections: PropTypes.array.isRequired,
+  handleSelectChange: PropTypes.func
 }
