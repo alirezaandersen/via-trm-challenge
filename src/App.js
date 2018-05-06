@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddressForm from './components/addressForm'
 import { Row, Col } from 'react-materialize'
+import MonthRangeSelector from './components/monthRangeSelector'
 
 import './App.css';
 
@@ -13,7 +14,7 @@ class App extends Component {
        <AddressForm />
        </Col>
        <Col>
-        <h1>Month Selector</h1>
+        <MonthRangeSelector years="2017,2018,2019" />
        </Col>
        </Row>
       </div>
