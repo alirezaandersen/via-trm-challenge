@@ -22,17 +22,17 @@ body {
 
 
 .month-selected {
-  background-color: aqua !important;
+  background-color: aqua;
 }
 
 .month-selected:hover {
-  background-color: aqua !important;
+  background-color: aqua;
 }
 
 .month-in-range {
-  background-color: lightgray !important;
+  background-color: lightgray;
 }
 
 .month-in-range:hover {
-  background-color: yellow !important;
+  background-color: lightgray;
 }
