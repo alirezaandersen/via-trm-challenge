@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Col, Row } from 'react-materialize'
 import monthAbv from '../const/months'
+import _ from 'lodash'
 
 export default class MonthRangeSelector extends Component {
   constructor(props) {
@@ -36,17 +37,33 @@ export default class MonthRangeSelector extends Component {
     )
   }
 
-  setBackgroundColor = date => {
+
+    setBackgroundColor = date => {
       if (this.isMonthSelected(date)) {
         return 'month-selected'
       }
+      if (this.isMonthInRange(date)) {
+        return 'month-in-range'
+      }
     }
 
-  isMonthSelected = date => {
-   return this.state.selectedMonths.some( month => {
-     return month.valueOf() === date.valueOf()
-   })
- }
+    isMonthSelected = date => {
+      return this.state.selectedMonths.some( month => {
+        return month.valueOf() === date.valueOf()
+      })
+    }
+
+    isMonthInRange = date => {
+      const { selectedMonths } = this.state
+      if (selectedMonths.length === 2 &&
+        date > _.min(selectedMonths) && date < _.max(selectedMonths)
+      ) {
+        return true
+      } else {
+        return false
+      }
+
+    }
 
   render() {
     return this.props.years.split(",").map((year) =>
