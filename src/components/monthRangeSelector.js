@@ -26,6 +26,7 @@ export default class MonthRangeSelector extends Component {
       monthAbv.map((month, index) => {
         const date = new Date(yearNumber, index);
         return <Button flat
+         className={this.setBackgroundColor(date)}
           key={month}
           onClick={() => this.handleMonthSelect(date)}
           style={{ border: '',  }} >
@@ -34,6 +35,18 @@ export default class MonthRangeSelector extends Component {
       })
     )
   }
+
+  setBackgroundColor = date => {
+      if (this.isMonthSelected(date)) {
+        return 'month-selected'
+      }
+    }
+
+  isMonthSelected = date => {
+   return this.state.selectedMonths.some( month => {
+     return month.valueOf() === date.valueOf()
+   })
+ }
 
   render() {
     return this.props.years.split(",").map((year) =>
