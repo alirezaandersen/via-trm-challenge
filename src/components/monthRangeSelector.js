@@ -21,7 +21,6 @@ export default class MonthRangeSelector extends Component {
      }
   }
 
-
   monthsFor(yearNumber) {
     return (
       monthAbv.map((month, index) => {
@@ -37,33 +36,32 @@ export default class MonthRangeSelector extends Component {
     )
   }
 
+  setBackgroundColor = date => {
+    if (this.isMonthSelected(date)) {
+      return 'month-selected'
+    }
+    if (this.isMonthInRange(date)) {
+      return 'month-in-range'
+    }
+  }
 
-    setBackgroundColor = date => {
-      if (this.isMonthSelected(date)) {
-        return 'month-selected'
-      }
-      if (this.isMonthInRange(date)) {
-        return 'month-in-range'
-      }
+  isMonthSelected = date => {
+    return this.state.selectedMonths.some( month => {
+      return month.valueOf() === date.valueOf()
+    })
+  }
+
+  isMonthInRange = date => {
+    const { selectedMonths } = this.state
+    if (selectedMonths.length === 2 &&
+      date > _.min(selectedMonths) && date < _.max(selectedMonths)
+    ) {
+      return true
+    } else {
+      return false
     }
 
-    isMonthSelected = date => {
-      return this.state.selectedMonths.some( month => {
-        return month.valueOf() === date.valueOf()
-      })
-    }
-
-    isMonthInRange = date => {
-      const { selectedMonths } = this.state
-      if (selectedMonths.length === 2 &&
-        date > _.min(selectedMonths) && date < _.max(selectedMonths)
-      ) {
-        return true
-      } else {
-        return false
-      }
-
-    }
+  }
 
   render() {
     return this.props.years.split(",").map((year) =>
