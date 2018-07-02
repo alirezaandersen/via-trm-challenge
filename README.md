@@ -1,6 +1,6 @@
 # Via TRM Code Challenge
 
-See this work live at https://via-trm-ali-challenge.herokuapp.com/
+See this work live at https://via-trm-ali-challenge.herokuapp.com/ - no longer working
 
 ## About the Challenge
 Create 2 components for us using React. You may use any 3rd party packages you like. Styling and Heroku deployment are bonus points.
